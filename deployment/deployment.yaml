@@ -1,0 +1,36 @@
+# rollback
+# kubectl rollout undo deploy/nginx
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  annotations:
+    # kubectl rollout history deploy/nginx
+    # historyに履歴が残せる
+    kubernetes.io/change-cause: "Update nginx 1.17.3"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web
+      env: study
+  revisionHistoryLimit: 14
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1 # 宣言したPod数を超えて作れるPod数
+      maxUnavailable: 1 # 停止状態になる最大Pod数
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: web
+        env: study
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.17.3-alpine
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"

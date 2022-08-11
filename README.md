@@ -49,3 +49,15 @@ kubectl describe [TYPE/NAME]
 # n -> get most recent record until assigned number
 kubectl logs [TYPE/NAME][--tail=n]
 ```
+
+## Confirm Revision
+
+```
+kubectl rollout history TYPE/NAME
+```
+
+## Rollout
+
+```
+kubectl rollout undo TYPE/NAME --to-revision=N
+```
