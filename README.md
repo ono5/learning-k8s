@@ -39,3 +39,13 @@ kubectl cp <src> <pod-name>:<dest>
 # Pod -> Host
 kubectl cp <pod-name>:<src> <dest>
 ```
+
+## How to investigate pod
+
+```
+# TYPE/NAME -> resource type / resource name
+kubectl describe [TYPE/NAME]
+
+# n -> get most recent record until assigned number
+kubectl logs [TYPE/NAME][--tail=n]
+```

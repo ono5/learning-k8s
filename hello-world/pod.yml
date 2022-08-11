@@ -7,5 +7,5 @@ metadata:
     env: study
 spec:
   containers:
-  - name: hello-world
-    image: hello-world
+    - name: hello-world
+      image: hello-world

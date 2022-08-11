@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample
+  labels:
+    name: sample
+spec:
+  containers:
+    - name: sample
+      image: nginx:1.17.2-alpine
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+      volumeMounts:
+        - name: storage
+          mountPath: /home/nginx
+  volumes:
+    - name: storage
+      hostPath:
+        path: /Users/hono/Desktop/k8s/volume_mount/data/storage
+        type: Directory
