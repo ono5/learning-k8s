@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: sample
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web # 一致している必要がある
+      env: study # 一致している必要がある
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: web # 一致している必要がある
+        env: study # 一致している必要がある
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.17.2-alpine
