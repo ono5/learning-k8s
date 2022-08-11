@@ -26,3 +26,16 @@ debug   1/1     Running   0          22s   10.1.0.16   docker-desktop   <none>  
 nginx   1/1     Running   0          22s   10.1.0.15   docker-desktop   <none>           <none>
 ```
 
+## File Transfer
+
+```
+# SRC -> Source file that you want to transfer
+# DEST -> Destination File you want to get
+kuubectl cp SRC DEST
+
+# Host -> Pod
+kubectl cp <src> <pod-name>:<dest>
+
+# Pod -> Host
+kubectl cp <pod-name>:<src> <dest>
+```
