@@ -61,3 +61,42 @@ kubectl rollout history TYPE/NAME
 ```
 kubectl rollout undo TYPE/NAME --to-revision=N
 ```
+
+## Secret
+
+```
+# create Secerat from command
+# open
+# --from-literal=key=value # assign key value
+# --from-file=filename # ceate from file
+# NAME -> secret
+kubectl create secret generic NAME [optoin]
+```
+
+Base64 string
+
+```
+echo -N 'TEXT' | base64
+```
+
+```
+$ kubectl create secret generic sample-secret --from-literal=message='Hello World!' --from-file=./secret/keyfile
+
+$ kubectl get secret
+NAME            TYPE     DATA   AGE
+sample-secret   Opaque   2      28s
+
+$ kubectl get secret/sample-secret -o yaml
+apiVersion: v1
+data:
+  keyfile: WU9VUi1TRUNSRVQtS0VZCg==
+  message: SGVsbG8gV29ybGQh
+kind: Secret
+metadata:
+  creationTimestamp: "2022-08-12T01:42:53Z"
+  name: sample-secret
+  namespace: default
+  resourceVersion: "54737"
+  uid: 93e895ff-c260-48db-b43b-90a9efc84b87
+type: Opaque
+```
