@@ -100,3 +100,9 @@ metadata:
   uid: 93e895ff-c260-48db-b43b-90a9efc84b87
 type: Opaque
 ```
+
+# Run pod for debug
+
+```
+kubectl run debug --image=centos:7 -it --rm --restart=Never -- sh
+```
