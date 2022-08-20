@@ -106,3 +106,45 @@ type: Opaque
 ```
 kubectl run debug --image=centos:7 -it --rm --restart=Never -- sh
 ```
+
+# Output yaml
+```
+$ kubectl get service/myapi-apicharts  -o yaml
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: myapi
+    meta.helm.sh/release-namespace: default
+  creationTimestamp: "2022-08-20T09:29:48Z"
+  labels:
+    app.kubernetes.io/instance: myapi
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: apicharts
+    app.kubernetes.io/version: 1.16.0
+    helm.sh/chart: apicharts-0.1.0
+  name: myapi-apicharts
+  namespace: default
+  resourceVersion: "302292"
+  uid: 1d10db3a-0b6b-484e-b6cf-d92929347df6
+spec:
+  clusterIP: 10.102.168.60
+  clusterIPs:
+  - 10.102.168.60
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: http
+  selector:
+    app.kubernetes.io/instance: myapi
+    app.kubernetes.io/name: apicharts
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
+```
