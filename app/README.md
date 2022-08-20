@@ -53,3 +53,9 @@ $ helm install myapi apicharts-0.1.0.tgz
 $ helm uninstall myapi
 release "myapi" uninstalled
 ```
+
+## How to dry run before creating app from your chart?
+
+```
+$ helm install test --dry-run apicharts/
+```
