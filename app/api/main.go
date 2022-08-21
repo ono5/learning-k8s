@@ -10,14 +10,14 @@ import (
 
 func main() {
 	// reids
-	repository.SetupRedis()
+	// repository.SetupRedis()
 
 	e := echo.New()
 	e.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Hello, World!")
 	})
-	e.GET("users/:uuid", getUserList)
-	e.GET("ranking", ranking)
+	// e.GET("users/:uuid", getUserList)
+	// e.GET("ranking", ranking)
 	e.Logger.Fatal(e.Start(":8080"))
 }
 

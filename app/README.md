@@ -36,7 +36,12 @@ echo "Visit http://127.0.0.1:8080 to use your application"
 kubectl --namespace default port-forward $POD_NAME 8080:$CONTAINER_PORT
 ```
 
-### How to undeploy with helm Chart?
+### How to upgrade with Helm Chart?
+```
+helm upgrade myapi apicharts/
+```
+
+### How to undeploy with Helm Chart?
 
 ```
 $ helm uninstall myapi
@@ -58,4 +63,23 @@ release "myapi" uninstalled
 
 ```
 $ helm install test --dry-run apicharts/
+```
+
+## Redis
+
+```
+# helm search repo redis
+helm install redis bitnami/redis
+helm uninstall redis
+```
+
+## Helm Update
+```
+helm repo update
+```
+
+## Clean Up
+
+```
+helm uninstall myapi redis
 ```
