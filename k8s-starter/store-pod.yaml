@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: store-app
+  labels:
+    name: store-app
+    component: store
+spec:
+  containers:
+    - name: store
+      image: laithharb/store
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+      ports:
+        - containerPort: 3000
