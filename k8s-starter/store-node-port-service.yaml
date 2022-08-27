@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: store-node-port-service
+spec:
+  type: NodePort
+  selector:
+    component: store
+  ports:
+    - nodePort: 31600 # 外部通信 http://localhost:31600/
+      port: 80 # nodePort -> Service portに転送
+      targetPort: 80 # -> コンテナのportに転送
