@@ -5,7 +5,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    component: store
+    component: store # 転送先pod
   ports:
     - nodePort: 31600 # 外部通信 http://localhost:31600/
       port: 80 # nodePort -> Service portに転送
