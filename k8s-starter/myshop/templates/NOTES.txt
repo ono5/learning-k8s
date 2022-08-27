@@ -1,0 +1,4 @@
+The release name is {{ .Release.Name }} and it will be installed to the
+{{ .Release.Namespace }} namespace.
+Is this a new installation? {{ .Release.IsInstall }}
+Is this an upgrade? {{ .Release.IsUpgrade }}

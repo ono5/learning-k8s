@@ -1,0 +1,59 @@
+replicaCount: 1
+
+image:
+  store:
+    repository: laithharb/store-app
+    pullPolicy: IfNotPresent
+    tag: "latest"
+  products:
+    repository: laithharb/products-api
+    pullPolicy: IfNotPresent
+    tag: "latest"
+
+# serviceAccount:
+#   create: true
+#   annotations: {}
+#   name: ""
+
+# podAnnotations: {}
+
+service:
+  store:
+    name: store-node-port-service
+    type: NodePort
+    port: 80
+    nodePort: 31600
+
+pod:
+  store:
+    name: store
+    port: 80
+  products:
+    name: product-api
+    port: 5002
+
+# ingress:
+#   enabled: false
+#   className: ""
+#   annotations: {}
+#   hosts:
+#     - host: chart-example.local
+#       paths:
+#         - path: /
+#           pathType: ImplementationSpecific
+#   tls: []
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
