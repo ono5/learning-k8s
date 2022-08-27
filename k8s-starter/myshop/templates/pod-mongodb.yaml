@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ .Values.pod.mongodb.name }}
+  labels:
+    component: {{ .Values.pod.mongodb.name }}
+spec:
+  containers:
+    - name: {{ .Values.pod.mongodb.name }}
+      image:  "{{ .Values.image.mongodb.repository }}:{{ .Values.image.mongodb.tag | default .Chart.AppVersion }}"
+      imagePullPolicy: {{ .Values.image.mongodb.pullPolicy }}
+      resources:
+        {{- toYaml .Values.resources | nindent 12 }}
+      ports:
+        - containerPort: {{ .Values.pod.mongodb.port }}

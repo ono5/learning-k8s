@@ -9,6 +9,10 @@ image:
     repository: laithharb/products-api
     pullPolicy: IfNotPresent
     tag: "latest"
+  mongodb:
+    repository: mongo
+    pullPolicy: IfNotPresent
+    tag: "latest"
 
 # serviceAccount:
 #   create: true
@@ -21,8 +25,12 @@ service:
   store:
     name: store-node-port-service
     type: NodePort
-    port: 80
     nodePort: 31600
+    port: 80
+  mongodb:
+    name: mongodb-cluster-ip-service
+    type: ClusterIP
+    port: 27017
 
 pod:
   store:
@@ -31,6 +39,9 @@ pod:
   products:
     name: product-api
     port: 5002
+  mongodb:
+    name: mongodb
+    port: 27017
 
 # ingress:
 #   enabled: false
