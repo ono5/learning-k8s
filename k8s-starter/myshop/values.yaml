@@ -21,9 +21,13 @@ image:
 
 service:
   store:
-    name: store-node-port-service
+    name: store-cluster-ip-service
     type: ClusterIP
     port: 80
+  products:
+    name: products-cluster-ip-service
+    type: ClusterIP
+    port: 5002
   mongodb:
     name: mongodb-cluster-ip-service
     type: ClusterIP
