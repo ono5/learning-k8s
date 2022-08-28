@@ -1,4 +1,4 @@
-.PHONY: up clean watch dry-run install uninstall status upgrade
+.PHONY: up clean watch dry-run install uninstall status upgrade namespace
 
 up:
 	kubectl apply -f store-pod.yaml
@@ -11,7 +11,7 @@ clean:
 	kubectl delete -f products-api-pod.yaml
 
 watch:
-	watch -t "kubectl get svc,deployment,pods,ingress"
+	watch -t "kubectl get svc,deployment,pods,ingress --namespace=myshop"
 
 dry-run:
 	helm install myshop --dry-run ./myshop/
@@ -27,3 +27,6 @@ status:
 
 upgrade:
 	helm upgrade myshop ./myshop
+
+namespace:
+	kubectl get namespace

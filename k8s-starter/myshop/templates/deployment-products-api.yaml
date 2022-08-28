@@ -1,23 +1,8 @@
-apiVersion: v1
-kind: Pod
-metadata:
-  name: {{ .Values.deployment.products.name }}
-  labels:
-    component: {{ .Values.deployment.products.name }}
-spec:
-  containers:
-    - name: {{ .Values.deployment.products.name }}
-      image:  "{{ .Values.image.products.repository }}:{{ .Values.image.products.tag | default .Chart.AppVersion }}"
-      imagePullPolicy: {{ .Values.image.products.pullPolicy }}
-      resources:
-        {{- toYaml .Values.resources | nindent 12 }}
-      ports:
-        - containerPort: {{ .Values.deployment.products.port }}
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
  name: {{ .Values.deployment.products.name }}
+ namespace: {{ .Release.Name }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:

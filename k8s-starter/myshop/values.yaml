@@ -1,4 +1,4 @@
-replicaCount: 3
+replicaCount: 2
 
 image:
   pullPolicy: IfNotPresent
@@ -22,8 +22,7 @@ image:
 service:
   store:
     name: store-node-port-service
-    type: NodePort
-    nodePort: 31600
+    type: ClusterIP
     port: 80
   mongodb:
     name: mongodb-cluster-ip-service
