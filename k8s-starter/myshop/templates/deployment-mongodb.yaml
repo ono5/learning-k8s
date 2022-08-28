@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: {{ .Values.deployment.mongodb.name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      component: {{ .Values.deployment.mongodb.name }}
+  template:
+    metadata:
+      labels:
+        component: {{ .Values.deployment.mongodb.name }}
+    spec:
+      containers:
+        - name:  {{ .Values.deployment.mongodb.name }}
+          image:  "{{ .Values.image.mongodb.repository }}:{{ .Values.image.mongodb.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          ports:
+            - containerPort: {{ .Values.deployment.mongodb.port }}
+

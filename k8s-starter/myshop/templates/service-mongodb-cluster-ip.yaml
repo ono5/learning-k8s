@@ -5,7 +5,7 @@ metadata:
 spec:
   type: {{ .Values.service.mongodb.type }}
   selector:
-    component: {{ .Values.pod.mongodb.name }}
+    component: {{ .Values.deployment.mongodb.name }}
   ports:
     - name: db
       protocol: TCP
