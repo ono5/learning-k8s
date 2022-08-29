@@ -21,4 +21,11 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           ports:
             - containerPort: {{ .Values.deployment.products.port }}
+          env:
+            - name: MONGODB_HOST
+              value: "{{ .Values.service.mongodb.name }}"
+            - name: RABBITMQ_HOST
+              value: "{{ .Values.service.rabbitmq.name }}"
+            - name: RABBITMQ_PORT
+              value:  "{{ .Values.service.rabbitmq.port }}"
 

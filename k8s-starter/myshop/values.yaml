@@ -1,4 +1,4 @@
-replicaCount: 2
+replicaCount: 1
 
 image:
   pullPolicy: IfNotPresent
@@ -7,7 +7,7 @@ image:
     tag: "latest"
   products:
     repository: laithharb/products-api
-    tag: "latest"
+    tag: "v2"
   notifications:
     repository: laithharb/notifications-api
     tag: "latest"
@@ -74,10 +74,10 @@ deployment:
 resources:
   limits:
     cpu: 100m
-    memory: 128Mi
+    memory: 256Mi
   requests:
     cpu: 100m
-    memory: 128Mi
+    memory: 256Mi
 
 autoscaling:
   enabled: false
