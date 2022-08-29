@@ -11,6 +11,9 @@ image:
   notifications:
     repository: laithharb/notifications-api
     tag: "latest"
+  rabbitmq:
+    repository: rabbitmq
+    tag: "latest"
   mongodb:
     repository: mongo
     tag: "latest"
@@ -31,6 +34,10 @@ service:
     name: products-cluster-ip-service
     type: ClusterIP
     port: 5002
+  rabbitmq:
+    name: rqbbitmq-cluster-ip-service
+    type: ClusterIP
+    port: 5672
   mongodb:
     name: mongodb-cluster-ip-service
     type: ClusterIP
@@ -46,6 +53,9 @@ deployment:
   notifications:
     name: notifications-api
     port: 5001
+  rabbitmq:
+    name: rabbitmq
+    port: 5672
   mongodb:
     name: mongodb
     port: 27017

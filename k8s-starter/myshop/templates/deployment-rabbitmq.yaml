@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: {{ .Values.deployment.rabbitmq.name }}
+ namespace: {{ .Release.Name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      component: {{ .Values.deployment.rabbitmq.name }}
+  template:
+    metadata:
+      labels:
+        component: {{ .Values.deployment.rabbitmq.name }}
+    spec:
+      containers:
+        - name:  {{ .Values.deployment.rabbitmq.name }}
+          image:  "{{ .Values.image.rabbitmq.repository }}:{{ .Values.image.rabbitmq.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          ports:
+            - containerPort: {{ .Values.deployment.rabbitmq.port }}
+
