@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: {{ .Values.deployment.notifications.name }}
+ namespace: {{ .Release.Name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      component: {{ .Values.deployment.notifications.name }}
+  template:
+    metadata:
+      labels:
+        component: {{ .Values.deployment.notifications.name }}
+    spec:
+      containers:
+        - name:  {{ .Values.deployment.notifications.name }}
+          image:  "{{ .Values.image.notifications.repository }}:{{ .Values.image.notifications.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          ports:
+            - containerPort: {{ .Values.deployment.notifications.port }}
+

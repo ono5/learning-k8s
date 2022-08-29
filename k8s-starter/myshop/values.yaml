@@ -8,6 +8,9 @@ image:
   products:
     repository: laithharb/products-api
     tag: "latest"
+  notifications:
+    repository: laithharb/notifications-api
+    tag: "latest"
   mongodb:
     repository: mongo
     tag: "latest"
@@ -40,6 +43,9 @@ deployment:
   products:
     name: product-api
     port: 5002
+  notifications:
+    name: notifications-api
+    port: 5001
   mongodb:
     name: mongodb
     port: 27017
