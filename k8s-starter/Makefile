@@ -17,9 +17,12 @@ dry-run:
 	helm install myshop --dry-run ./myshop/
 
 install:
+	# ネームスペースを作成し、その上にデプロイすることも可能
+	# helm install --create-namespace myshop -n myshop ./myshop/
 	helm install myshop ./myshop/
 
 uninstall:
+	# helm uninstall myshop --namespace myshop
 	helm uninstall myshop
 
 status:

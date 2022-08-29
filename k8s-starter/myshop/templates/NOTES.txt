@@ -1,3 +1,7 @@
+{% comment %} _helpers.tpl {% endcomment %}
+{{ include "myapp.name" . }}
+
+{% comment %} Release Object {% endcomment %}
 The release name is {{ .Release.Name }} and it will be installed to the
 {{ .Release.Namespace }} namespace.
 Is this a new installation? {{ .Release.IsInstall }}
