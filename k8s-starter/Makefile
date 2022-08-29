@@ -11,7 +11,8 @@ clean:
 	kubectl delete -f products-api-pod.yaml
 
 watch:
-	watch -t "kubectl get svc,deployment,pods,ingress --namespace=myshop"
+	# watch -t "kubectl get svc,deployment,pods,ingress --namespace=myshop"
+	watch -t "kubectl get svc,deployment,pods,Ingress --namespace=${n}"
 
 dry-run:
 	helm install myshop --dry-run ./myshop/
