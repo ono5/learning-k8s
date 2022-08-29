@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rabbitmq-configmap
+  namespace: {{ .Release.Name }}
+data:
+  RABBITMQ_HOST: "{{ .Values.service.rabbitmq.name }}"
+  RABBITMQ_PORT: "{{ .Values.service.rabbitmq.port }}"
