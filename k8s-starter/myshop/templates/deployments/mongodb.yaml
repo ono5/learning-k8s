@@ -21,4 +21,11 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           ports:
             - containerPort: {{ .Values.deployment.mongodb.port }}
+          volumeMounts:
+            - name:  {{ .Values.volumes.claim.mongodb.name }}
+              mountPath:  {{ .Values.volumes.claim.mongodb.mountPath }}
+      volumes:
+        - name:  {{ .Values.volumes.claim.mongodb.name }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.volumes.claim.mongodb.name }}
 
